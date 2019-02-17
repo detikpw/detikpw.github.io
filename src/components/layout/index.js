@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { createGlobalStyle } from 'styled-components'
+import { Box } from 'rebass';
 
 import Header from './Header';
 import Sidebar from '../sidebar';
@@ -22,7 +23,11 @@ export default class extends Component {
     const { children } = this.props;
     const { isSidebarOpen } = this.state;
     return (
-      <div>
+      <Box
+        css={{
+          fontFamily:"HelveticaNeueArabic,NeueHelveticaW01,Helvetica,HelveticaWorld,Arial,TazuganeGothic,sans-serif"
+        }}
+      >
         <Helmet>
           <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"/>
         </Helmet>
@@ -36,7 +41,7 @@ export default class extends Component {
           isSidebarOpen={isSidebarOpen}
         />
         {children}
-      </div>
+      </Box>
     );
   }
 }

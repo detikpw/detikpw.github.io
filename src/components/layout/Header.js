@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Box, Button,  Flex, Text, Card } from 'rebass';
+import Menu from '../icons/Menu';
 
 export default class Header extends Component {
 
@@ -12,7 +13,7 @@ export default class Header extends Component {
         <Flex
           px={3}
           alignItems="center"
-          justifyContent="center"
+          justifyContent="start"
           flexDirection="row"
           css={{
               height: '40px'
@@ -20,9 +21,7 @@ export default class Header extends Component {
         >
           <Box alignSelf="center" width={1/6}>
             <Button px={0} bg="white" onClick={onOpenSidebar}>
-              <svg width="16" height="14" viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h20v2H0V0zm0 6h20v2H0V6zm0 6h20v2H0v-2z" fill="#000000" fillRule="evenodd" />
-              </svg>
+              <Menu />
             </Button>
           </Box>
           <Box alignSelf="center" width={4/6}>
@@ -32,9 +31,6 @@ export default class Header extends Component {
             >
               Catatan Detik
             </Text>
-          </Box>
-          <Box alignSelf="center" width={1/6}>
-            Test
           </Box>
         </Flex>
       </Card>
