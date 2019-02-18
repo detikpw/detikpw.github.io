@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Menu = () => (
+const Close = () => (
   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="24px">
     <title/>
     <g id="cross" style={{
@@ -16,4 +16,4 @@ const Menu = () => (
   </svg>
 );
 
-export default Menu;
+export default Close;
