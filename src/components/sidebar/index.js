@@ -1,8 +1,7 @@
 import React from 'react';
-import { Flex, Box, Button, Text } from 'rebass';
+import { Flex, Button } from 'rebass';
 import Navbar from './Navbar';
 import SidebarItem from './SidebarItem';
-import Link from '../link';
 import CloseIcon from '../icons/Close';
 
 export default ({ onCloseSidebar, isSidebarOpen }) => (
