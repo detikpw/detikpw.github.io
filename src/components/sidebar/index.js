@@ -10,13 +10,13 @@ export default ({ onCloseSidebar, isSidebarOpen }) => (
         bg="white"
         width={1}
         px={3}
-        justifyContent="center"
         flexDirection="column"
         css={{
             position: 'fixed',
             top: '0',
             left: '0',
             zIndex: 250,
+            height:'100vh'
         }}
     >
       <Button
