@@ -5,7 +5,12 @@ import Menu from '../icons/Menu';
 
 const header = ({ onOpenSidebar }) => data => (
   <Card
+    width={1}
     boxShadow="0 1px 0 rgba(0,0,0,0.15)"
+    bg="white"
+    css={{
+      position: 'fixed'
+    }}
   >
     <Flex
       px={3}
