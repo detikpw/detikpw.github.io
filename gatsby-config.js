@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-      title: `Catatan Bambang`,
+      title: `Catatan Detik`,
     },
     plugins: ['gatsby-plugin-flow', 'gatsby-plugin-styled-components', 'gatsby-plugin-react-helmet',
     {
