@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text } from 'rebass';
 
-const PageHeader = ({ children }) => (
+const PageHeader = ({ children, as }) => (
   <Text
-    as="h2"
+    as={as}
     fontSize=".75rem"
     fontWeight={600}
     lineHeight={1.2}
@@ -15,5 +15,7 @@ const PageHeader = ({ children }) => (
     {children}
   </Text>
 );
-
+PageHeader.defaultProps = {
+  as: 'h2'
+}
 export default PageHeader;
