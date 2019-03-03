@@ -5,18 +5,26 @@ import styled from 'styled-components';
 
 const StyledLink = styled(RebassLink);
 
-const Link = ({ children, withTextDecoration, ...props }) => (
+const Link = ({ children, to, withTextDecoration, ...props }) => {
+  const isInternal = /^\/(?!\/)/.test(to);
+  const customTo = {
+    [isInternal ? 'to' : 'href']: to
+  }
+  return (
     <RebassLink
-        {...props}
-        as={GatsbyLink}
-        color='black'
-        css={{
-            'text-decoration': withTextDecoration ? undefined : 'none',
-        }}
+      {...props}
+      {...customTo}
+      target={isInternal ? undefined : '_blank'}
+      as={isInternal ? GatsbyLink : 'a'}
+      color='black'
+      css={{
+        'text-decoration': withTextDecoration ? undefined : 'none',
+      }}
     >
-        {children}
+      {children}
     </RebassLink>
-);
+  );
+}
 
 Link.defaultProps = {
     withTextDecoration: true
