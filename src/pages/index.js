@@ -4,6 +4,8 @@ import type { Node } from 'react';
 
 import React from 'react';
 import { Image } from 'rebass';
+import { graphql } from "gatsby";
+import { map, prop } from 'ramda';
 import Mobile from '../components/devices/Mobile';
 import Layout from '../components/layout';
 import HeaderSection from '../components/layout/pages/HeaderSection';
@@ -14,38 +16,61 @@ import PageHeader from '../components/typography/PageHeader';
 import Topic from '../components/typography/Topic';
 import ArticleTitle from '../components/typography/ArticleTitle';
 import ArticleBody from '../components/typography/ArticleBody';
+import Link from '../components/link';
 
-export default (): Node => (
+const renderPosts = ({ frontmatter, id, excerpt }) => {
+  const { topic, image, title, path } = frontmatter;
+  return (
+    <Articles key={id}>
+      {topic && <Topic>{topic}</Topic>}
+      {image && <Image src={image}/>}
+      <ArticleSummary>
+        <Link
+          withTextDecoration={false}
+          to={path}
+        >
+          <ArticleTitle>{title}</ArticleTitle>
+          <ArticleBody><div dangerouslySetInnerHTML={{ __html: excerpt }}/></ArticleBody>
+        </Link>
+      </ArticleSummary>
+    </Articles>
+  );
+}
+export default ({
+    data: {
+      allMarkdownRemark: { edges },
+    },
+}): Node => {
+  const posts = map(prop('node'), edges)
+  return (
     <Layout>
-        <Image
-          src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
-        />
-        <Body>
-          <HeaderSection>
-            <PageHeader>
-              Terbaru
-            </PageHeader>
-          </HeaderSection>
-          <Articles>
-            <Topic>Topik 1</Topic>
-            <Image
-              src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
-            />
-            <ArticleSummary>
-              <ArticleTitle>Judul title</ArticleTitle>
-              <ArticleBody>I'm currently hacking something with Gatsby + Contentful and I'm trying to display a p with a different color than the global p without success</ArticleBody>
-            </ArticleSummary>
-          </Articles>
-          <Articles>
-            <Topic>Topik 1</Topic>
-            <Image
-              src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
-            />
-            <ArticleSummary>
-              <ArticleTitle>Judul title</ArticleTitle>
-              <ArticleBody>I'm currently hacking something with Gatsby + Contentful and I'm trying to display a p with a different color than the global p without success</ArticleBody>
-            </ArticleSummary>
-          </Articles>
-        </Body>
+      <Body>
+        <HeaderSection>
+          <PageHeader>
+            Terbaru
+          </PageHeader>
+        </HeaderSection>
+        {posts.map(renderPosts)}
+      </Body>
     </Layout>
-)
+  )
+}
+
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            path
+            title
+          }
+          html
+        }
+      }
+    }
+  }
+`
