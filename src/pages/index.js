@@ -21,21 +21,26 @@ import Image from '../components/images/Image';
 
 const renderPosts = ({ frontmatter, id, excerpt, fields }) => {
   const { topic, image, title } = frontmatter;
+  const { path } = fields;
   return (
-    <Link
-      key={id}
-      withTextDecoration={false}
-      to={fields.path}
-    >
-      <Articles>
-        {topic && <Topic>{topic}</Topic>}
-        {image && <Image src={image}/>}
+    <Articles key={id}>
+      {topic && <Topic>{topic}</Topic>}
+      {image.src && (
+        <Image
+          {...image}
+          url={path}
+        />
+      )}
+      <Link
+        withTextDecoration={false}
+        to={path}
+      >
         <ArticleSummary>
-            <ArticleTitle>{title}</ArticleTitle>
-            <ArticleBody><div dangerouslySetInnerHTML={{ __html: excerpt }}/></ArticleBody>
+          <ArticleTitle>{title}</ArticleTitle>
+          <ArticleBody><div dangerouslySetInnerHTML={{ __html: excerpt }}/></ArticleBody>
         </ArticleSummary>
-      </Articles>
-    </Link>
+      </Link>
+    </Articles>
   );
 }
 export default ({
@@ -51,6 +56,7 @@ export default ({
         url="https://unsplash.com/photos/gm3bxHin8VA"
         caption="Photo By Daria Nepriakhina"
         captionUrl="https://unsplash.com/@epicantus"
+        captionPx={3}
       />
       <Body>
         <HeaderSection>
@@ -74,6 +80,11 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            image {
+              src
+              caption
+              captionUrl
+            }
           }
           fields {
             path

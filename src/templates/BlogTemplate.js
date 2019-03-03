@@ -1,29 +1,47 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Image } from 'rebass';
+import { Flex, Box } from 'rebass';
 import Layout from '../components/layout';
 import Body from '../components/layout/pages/Body';
 import HeaderSection from "../components/layout/pages/HeaderSection";
 import Article from "../components/layout/pages/Article";
 import PageHeader from '../components/typography/PageHeader';
 import Topic from '../components/typography/Topic';
+import Caption from '../components/typography/Caption';
+import Image from '../components/images/Image';
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { markdownRemark } = data // data.markdownRemark holds our post data
-  const { frontmatter, html } = markdownRemark;
+  const { frontmatter, html, timeToRead } = markdownRemark;
+  const { title, image, topic, date } = frontmatter;
   return (
     <Layout>
-      <Image src="https://images.unsplash.com/photo-1517842645767-c639042777db?
-ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80" />
+      {image.src && (
+        <Image
+          {...image}
+          captionPx={3}
+        />
+      )}
       <Body>
         <HeaderSection>
-          <Topic as='h1'>TEST</Topic>
+          {topic && <Topic as='h1'>{topic}</Topic>}
           <PageHeader>
             {frontmatter.title}
           </PageHeader>
         </HeaderSection>
+        <Flex>
+          <Caption>
+            {date}
+          </Caption>
+          <Box css={{
+            flex: 1
+          }}/>
+          <Caption>
+            {`${timeToRead} minutes`}
+          </Caption>
+        </Flex>
         <Article>
           {html}
         </Article>
@@ -36,9 +54,17 @@ export const pageQuery = graphql`
   query($path: String!) {
     markdownRemark(fields: { path: { eq: $path } }) {
       html
+      timeToRead
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        topic
+        image {
+          src
+          caption
+          captionUrl
+          url
+        }
       }
     }
   }
