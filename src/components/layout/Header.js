@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Button,  Flex, Text, Card } from 'rebass';
 import { StaticQuery, graphql } from 'gatsby';
 import Menu from '../icons/Menu';
+import Link from '../link';
 
 const header = ({ onOpenSidebar }) => data => (
   <Card
@@ -27,12 +28,14 @@ const header = ({ onOpenSidebar }) => data => (
         </Button>
       </Box>
       <Box alignSelf="center" width={4/6}>
-        <Text
-          fontFamily="Exo"
-          fontWeight="bold"
-        >
-          {data.site.siteMetadata.title}
-        </Text>
+        <Link to="/" withTextDecoration={false}>
+          <Text
+            fontFamily="Exo"
+            fontWeight="bold"
+          >
+            {data.site.siteMetadata.title}
+          </Text>
+        </Link>
       </Box>
     </Flex>
   </Card>
