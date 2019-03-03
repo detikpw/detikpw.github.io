@@ -19,13 +19,13 @@ import Caption from '../components/typography/Caption';
 import Link from '../components/link';
 import Image from '../components/images/Image';
 
-const renderPosts = ({ frontmatter, id, excerpt }) => {
-  const { topic, image, title, path } = frontmatter;
+const renderPosts = ({ frontmatter, id, excerpt, fields }) => {
+  const { topic, image, title } = frontmatter;
   return (
     <Link
       key={id}
       withTextDecoration={false}
-      to={path}
+      to={fields.path}
     >
       <Articles>
         {topic && <Topic>{topic}</Topic>}
@@ -73,8 +73,10 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 250)
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
-            path
             title
+          }
+          fields {
+            path
           }
           html
         }
