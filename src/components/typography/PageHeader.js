@@ -7,6 +7,7 @@ const PageHeader = ({ children }) => (
     fontSize="1.25rem"
     fontWeight={600}
     lineHeight={1.2}
+    my={0}
   >
     {children}
   </Text>
