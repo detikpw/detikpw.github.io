@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image as ImageRebass } from 'rebass';
+import { Image as ImageRebass, Box } from 'rebass';
 import Caption from '../typography/Caption';
 import Link from '../link';
 
@@ -23,7 +23,9 @@ const Image = ({ src, caption, captionUrl, url, captionPx }) => {
           {image}
         </Link>
       ) : image}
-      {maybeCaptionWitLink}
+      <Box alignSelf="flex-end">
+        {maybeCaptionWitLink}
+      </Box>
     </>
   );
 }
