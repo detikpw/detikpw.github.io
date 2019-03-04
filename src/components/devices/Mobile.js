@@ -5,4 +5,4 @@ import Responsive from 'react-responsive';
 
 type Props = { [string]: * }
 
-export default (props: Props) => <Responsive {...props} maxWidth={767} />;
+export default (props: Props) => <Responsive {...props} maxWidth="64em" />;
