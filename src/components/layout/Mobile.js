@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Flex, Box } from 'rebass';
-import Header from './Header';
+import Header from './HeaderMobile';
 import Footer from './Footer';
 import Sidebar from '../sidebar';
 import MobileScreen from '../devices/Mobile';
