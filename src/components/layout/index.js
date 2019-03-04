@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components'
 import { Box, Flex } from 'rebass';
 import { overflow, position } from 'styled-system';
 import MobileLayout from './Mobile';
+import HeaderDesktop from './HeaderDesktop';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -35,6 +36,8 @@ export default class extends Component {
         <MobileLayout>
           {children}
         </MobileLayout>
+        <HeaderDesktop />
+        {children}
       </Box>
     );
   }
