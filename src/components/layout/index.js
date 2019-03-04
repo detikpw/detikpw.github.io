@@ -11,6 +11,13 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     height: 100%;
   }
+  ::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+  }
+  ::-webkit-scrollbar-thumb {
+      background: #FF0000;
+  }
 `
 
 const Layout = ({ children }) => (
