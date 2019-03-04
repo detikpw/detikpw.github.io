@@ -5,6 +5,7 @@ import type { Node } from 'react';
 import React from 'react';
 import { graphql } from "gatsby";
 import { map, prop } from 'ramda';
+import { Flex } from 'rebass';
 import Mobile from '../components/devices/Mobile';
 import Layout from '../components/layout';
 import HeaderSection from '../components/layout/pages/HeaderSection';
@@ -18,6 +19,7 @@ import ArticleBody from '../components/typography/ArticleBody';
 import Caption from '../components/typography/Caption';
 import Link from '../components/link';
 import Image from '../components/images/Image';
+import MobileScreen from '../components/devices/Mobile';
 
 const renderPosts = ({ frontmatter, id, excerpt, fields }) => {
   const { topic, image, title, date } = frontmatter;
@@ -55,21 +57,25 @@ export default ({
   const posts = map(prop('node'), edges)
   return (
     <Layout>
-      <Image
-        src="https://images.unsplash.com/photo-1421882402971-b18cd1741ac6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1488&q=80"
-        url="https://unsplash.com/photos/gm3bxHin8VA"
-        caption="Photo By Daria Nepriakhina"
-        captionUrl="https://unsplash.com/@epicantus"
-        captionPx={3}
-      />
-      <Body>
-        <HeaderSection>
-          <PageHeader>
-            Terbaru
-          </PageHeader>
-        </HeaderSection>
-        {posts.map(renderPosts)}
-      </Body>
+      <Flex flexDirection="column">
+        <MobileScreen>
+          <Image
+            src="https://images.unsplash.com/photo-1421882402971-b18cd1741ac6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1488&q=80"
+            url="https://unsplash.com/photos/gm3bxHin8VA"
+            caption="Photo By Daria Nepriakhina"
+            captionUrl="https://unsplash.com/@epicantus"
+            captionPx={3}
+          />
+        </MobileScreen>
+        <Body>
+          <HeaderSection>
+            <PageHeader>
+              Terbaru
+            </PageHeader>
+          </HeaderSection>
+          {posts.map(renderPosts)}
+        </Body>
+      </Flex>
     </Layout>
   )
 }

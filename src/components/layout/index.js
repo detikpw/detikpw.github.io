@@ -30,7 +30,9 @@ export default class extends Component {
         }}
       >
         <Helmet>
+          {/* TODO Separate mobile and desktop */}
           <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet"></link>
         </Helmet>
         <GlobalStyle />
         <MobileLayout>
