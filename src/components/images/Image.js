@@ -15,7 +15,7 @@ const Image = ({ src, caption, captionUrl, url, captionPx }) => {
     </Link>)
     :
     captionComponent
-  const image = <ImageRebass src={src}/>;
+  const image = <ImageRebass src={src} width={1} />;
   return (
     <>
       {url ? (
