@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Text } from 'rebass';
+import { Flex, Text } from 'rebass';
 import { StaticQuery, graphql } from 'gatsby';
 import { sentence } from 'change-case';
 import { map } from 'ramda';
@@ -7,7 +7,7 @@ import NavItem from '../navs/NavItem';
 import Link from '../link';
 
 const renderNavItem = ({ fieldValue: category }) => (
-  <NavItem to={`/${category}`}>
+  <NavItem key={category} to={`/${category}`}>
     {sentence(category)}
   </NavItem>
 );

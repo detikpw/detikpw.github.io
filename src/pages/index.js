@@ -5,7 +5,6 @@ import type { Node } from 'react';
 import React from 'react';
 import { graphql } from "gatsby";
 import { map, prop } from 'ramda';
-import { Flex } from 'rebass';
 import PostList from '../components/layout/pages/PostList';
 
 export default ({

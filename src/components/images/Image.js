@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image as ImageRebass, Box } from 'rebass';
+import { Image as ImageRebass } from 'rebass';
 import Caption from '../typography/Caption';
 import Link from '../link';
 

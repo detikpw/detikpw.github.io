@@ -1,10 +1,7 @@
 import type { Node } from 'react';
 
 import React from 'react';
-import { graphql } from "gatsby";
-import { map, prop } from 'ramda';
 import { Flex } from 'rebass';
-import Mobile from '../../devices/Mobile';
 import Layout from '../../layout';
 import HeaderSection from '../../layout/pages/HeaderSection';
 import Body from '../../layout/pages/Body';

@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { createGlobalStyle } from 'styled-components'
-import { Box, Flex } from 'rebass';
-import { overflow, position } from 'styled-system';
+import { Box } from 'rebass';
 import MobileLayout from './Mobile';
 import DesktopLayout from './Desktop';
 import MobileScreen from '../devices/Mobile';

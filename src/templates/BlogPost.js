@@ -28,7 +28,7 @@ export default function Template({
         <HeaderSection>
           {topic && <Topic as='h1'>{topic}</Topic>}
           <PageHeader>
-            {frontmatter.title}
+            {title}
           </PageHeader>
         </HeaderSection>
         <Flex>

@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link as RebassLink } from 'rebass';
 import { Link as GatsbyLink } from 'gatsby';
-import styled from 'styled-components';
-
-const StyledLink = styled(RebassLink);
 
 const Link = ({ children, to, withTextDecoration, ...props }) => {
   const isInternal = /^\/(?!\/)/.test(to);

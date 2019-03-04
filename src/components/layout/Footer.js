@@ -1,8 +1,6 @@
 import React from 'react';
 import { Flex, Text } from 'rebass';
-import { StaticQuery, graphql } from 'gatsby';
 import Body from './pages/Body';
-import Menu from '../icons/Menu';
 import Link from '../link';
 
 const Footer = () => (
