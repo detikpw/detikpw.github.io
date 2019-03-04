@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components'
 import { Box, Flex } from 'rebass';
 
 import Header from './Header';
+import Footer from './Footer';
 import Sidebar from '../sidebar';
 import { overflow, position } from 'styled-system';
 
@@ -57,6 +58,7 @@ export default class extends Component {
           >
             {children}
           </Box>
+          <Footer />
         </Flex>
       </Box>
     );
