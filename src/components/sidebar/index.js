@@ -30,8 +30,10 @@ const sidebar = ({ onCloseSidebar, isSidebarOpen }) => data => (
       <Button
         bg="white"
         onClick={onCloseSidebar}
+        px={0}
         css={{
-            height: '60px'
+            height: '60px',
+            textAlign: 'left'
         }}
         width={1/6}
       >

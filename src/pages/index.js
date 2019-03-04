@@ -43,6 +43,7 @@ const renderPosts = ({ frontmatter, id, excerpt, fields }) => {
       <Caption>
         {date}
       </Caption>
+      <hr />
     </Articles>
   );
 }
