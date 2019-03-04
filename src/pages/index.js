@@ -20,7 +20,7 @@ import Link from '../components/link';
 import Image from '../components/images/Image';
 
 const renderPosts = ({ frontmatter, id, excerpt, fields }) => {
-  const { topic, image, title } = frontmatter;
+  const { topic, image, title, date } = frontmatter;
   const { path } = fields;
   return (
     <Articles key={id}>
@@ -40,6 +40,9 @@ const renderPosts = ({ frontmatter, id, excerpt, fields }) => {
           <ArticleBody><div dangerouslySetInnerHTML={{ __html: excerpt }}/></ArticleBody>
         </ArticleSummary>
       </Link>
+      <Caption>
+        {date}
+      </Caption>
     </Articles>
   );
 }
