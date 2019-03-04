@@ -22,12 +22,12 @@ const header = ({ onOpenSidebar }) => data => (
           height: '40px'
       }}
     >
-      <Box alignSelf="center" width={1/6}>
+      <Box alignSelf="center" width={1/12}>
         <Button px={0} bg="white" onClick={onOpenSidebar}>
           <Menu />
         </Button>
       </Box>
-      <Box alignSelf="center" width={4/6}>
+      <Box alignSelf="center" width={5/6}>
         <Link to="/" withTextDecoration={false}>
           <Text
             fontFamily="Exo"

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Image as ImageRebass, Box } from 'rebass';
 import Caption from '../typography/Caption';
 import Link from '../link';
@@ -17,14 +17,14 @@ const Image = ({ src, caption, captionUrl, url, captionPx }) => {
     captionComponent
   const image = <ImageRebass src={src}/>;
   return (
-    <Fragment>
+    <>
       {url ? (
         <Link to={url}>
           {image}
         </Link>
       ) : image}
       {maybeCaptionWitLink}
-    </Fragment>
+    </>
   );
 }
 

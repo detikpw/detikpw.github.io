@@ -1,10 +1,18 @@
 import React from 'react';
 import { Flex, Button } from 'rebass';
+import { StaticQuery, graphql } from 'gatsby';
+import { map } from 'ramda';
+import { sentence } from 'change-case';
 import Navbar from './Navbar';
 import SidebarItem from './SidebarItem';
 import CloseIcon from '../icons/Close';
 
-export default ({ onCloseSidebar, isSidebarOpen }) => (
+const renderSidebarItem = ({ fieldValue: category }) => (
+  <SidebarItem to={`/${category}`}>
+    {sentence(category)}
+  </SidebarItem>
+);
+const sidebar = ({ onCloseSidebar, isSidebarOpen }) => data => (
   <>
     {isSidebarOpen && <Flex
         bg="white"
@@ -20,12 +28,12 @@ export default ({ onCloseSidebar, isSidebarOpen }) => (
         }}
     >
       <Button
-          bg="white"
-          onClick={onCloseSidebar}
-          css={{
-              height: '60px'
-          }}
-          width={1/6}
+        bg="white"
+        onClick={onCloseSidebar}
+        css={{
+            height: '60px'
+        }}
+        width={1/6}
       >
         <CloseIcon />
       </Button>
@@ -34,14 +42,26 @@ export default ({ onCloseSidebar, isSidebarOpen }) => (
           Home
         </SidebarItem>
       </Navbar>
-      <Navbar title="tags">
-        <SidebarItem to="/">
-          asdf
-        </SidebarItem>
-        <SidebarItem to="/">
-          qwerty
-        </SidebarItem>
+      <Navbar title="category">
+        {map(renderSidebarItem, data.allMarkdownRemark.group)}
       </Navbar>
     </Flex>}
   </>
 );
+
+const Header = ({ onCloseSidebar, isSidebarOpen }) => (
+  <StaticQuery
+    query={graphql`
+      query{
+        allMarkdownRemark{
+          group(field: fields___category) {
+            fieldValue
+          }
+        }
+      }`
+    }
+    render={sidebar({ onCloseSidebar, isSidebarOpen })}
+  />
+);
+
+export default Header;
