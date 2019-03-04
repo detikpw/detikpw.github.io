@@ -4,7 +4,8 @@ import { createGlobalStyle } from 'styled-components'
 import { Box, Flex } from 'rebass';
 import { overflow, position } from 'styled-system';
 import MobileLayout from './Mobile';
-import HeaderDesktop from './HeaderDesktop';
+import DesktopLayout from './Desktop';
+import MobileScreen from '../devices/Mobile';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -25,11 +26,19 @@ const Layout = ({ children }) => (
       <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet"></link>
     </Helmet>
     <GlobalStyle />
-    <MobileLayout>
-      {children}
-    </MobileLayout>
-    <HeaderDesktop />
-    {children}
+    <MobileScreen>
+      { isMobile => (
+        isMobile ? (
+          <MobileLayout>
+            {children}
+          </MobileLayout>
+        ) : (
+          <DesktopLayout>
+            {children}
+          </DesktopLayout>
+        )
+      )}
+    </MobileScreen>
   </Box>
 );
 
