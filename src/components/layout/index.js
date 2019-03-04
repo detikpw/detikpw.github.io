@@ -13,35 +13,25 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-export default class extends Component {
-  state = {
-    isSidebarOpen: false
-  }
+const Layout = ({ children }) => (
+  <Box
+    css={{
+      fontFamily:'HelveticaNeueArabic,NeueHelveticaW01,Helvetica,HelveticaWorld,Arial,TazuganeGothic,sans-serif',
+    }}
+  >
+    <Helmet>
+      {/* TODO Separate mobile and desktop */}
+      <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet"></link>
+    </Helmet>
+    <GlobalStyle />
+    <MobileLayout>
+      {children}
+    </MobileLayout>
+    <HeaderDesktop />
+    {children}
+  </Box>
+);
 
-  openSidebar = () => this.setState({ isSidebarOpen: true })
-  closeSidebar = () => this.setState({ isSidebarOpen: false })
-  render() {
-    const { children } = this.props;
-    const { isSidebarOpen } = this.state;
-    return (
-      <Box
-        css={{
-          fontFamily:'HelveticaNeueArabic,NeueHelveticaW01,Helvetica,HelveticaWorld,Arial,TazuganeGothic,sans-serif',
-        }}
-      >
-        <Helmet>
-          {/* TODO Separate mobile and desktop */}
-          <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"/>
-          <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet"></link>
-        </Helmet>
-        <GlobalStyle />
-        <MobileLayout>
-          {children}
-        </MobileLayout>
-        <HeaderDesktop />
-        {children}
-      </Box>
-    );
-  }
-}
+export default Layout;
 
