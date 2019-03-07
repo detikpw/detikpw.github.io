@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Flex, Box } from 'rebass';
+import { prop } from 'ramda';
 import Layout from '../components/layout';
 import Body from '../components/layout/pages/Body';
 import HeaderSection from "../components/layout/pages/HeaderSection";
@@ -18,7 +19,7 @@ export default function Template({
   const { title, image, topic, date } = frontmatter;
   return (
     <Layout>
-      {image.src && (
+      {prop('src', image) && (
         <Image
           {...image}
           captionPx={3}
@@ -46,6 +47,7 @@ export default function Template({
           {html}
         </Article>
       </Body>
+      <hr />
     </Layout>
   )
 }
