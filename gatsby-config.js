@@ -10,6 +10,17 @@ module.exports = {
         name: "markdown-pages",
       },
     },
+    {
+      resolve: `gatsby-remark-prismjs`,
+      options: {
+        classPrefix: "language-",
+        inlineCodeMarker: null,
+        aliases: {},
+        showLineNumbers: false,
+        noInlineHighlight: false,
+      },
+    },
     `gatsby-transformer-remark`,
+    'gatsby-plugin-twitter'
   ],
 }
