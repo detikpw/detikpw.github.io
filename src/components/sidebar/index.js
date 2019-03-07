@@ -8,7 +8,7 @@ import SidebarItem from './SidebarItem';
 import CloseIcon from '../icons/Close';
 
 const renderSidebarItem = ({ fieldValue: category }) => (
-  <SidebarItem to={`/${category}`}>
+  <SidebarItem key={category} to={`/${category}`}>
     {sentence(category)}
   </SidebarItem>
 );

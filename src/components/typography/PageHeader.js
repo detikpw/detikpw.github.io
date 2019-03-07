@@ -18,7 +18,7 @@ const pageHeaderDesktop = (message) => (
   <Text
     as="h1"
     fontFamily="'Volkhov', serif"
-    fontSize="4.25rem"
+    fontSize="3.25rem"
     fontWeight={400}
     lineHeight={1}
     mt={4}

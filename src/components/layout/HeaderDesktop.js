@@ -13,7 +13,11 @@ const renderNavItem = ({ fieldValue: category }) => (
 );
 
 const headerDesktop = () => data => (
-  <Flex flexDirection="column" justifyContent="center" alignItems="center">
+  <Flex
+    flexDirection="column"
+    justifyContent="center"
+    alignItems="center"
+  >
     <Flex bg="black"
       py={2}
       px={3}

@@ -7,7 +7,7 @@ const HeaderSection = ({ children }) => (
     {
       isMobile => (
         <Box
-          pt={2}
+          py={2}
           css={{
             borderTop: isMobile ? '3px solid rgb(0, 0, 0)' : undefined
           }}

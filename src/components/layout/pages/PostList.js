@@ -2,6 +2,7 @@ import type { Node } from 'react';
 
 import React from 'react';
 import { Flex } from 'rebass';
+import { prop } from 'ramda';
 import Layout from '../../layout';
 import HeaderSection from '../../layout/pages/HeaderSection';
 import Body from '../../layout/pages/Body';
@@ -22,7 +23,7 @@ const renderPosts = ({ frontmatter, id, excerpt, fields }) => {
   return (
     <Articles key={id}>
       {topic && <Topic>{topic}</Topic>}
-      {image.src && (
+      {prop('src', image) && (
         <Image
           {...image}
           url={path}

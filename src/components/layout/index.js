@@ -18,6 +18,18 @@ const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar-thumb {
       background: #FF0000;
   }
+  blockquote {
+    font-family: "volkhov",serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    padding-left: 20px;
+    border-left: 8px solid #000;
+  }
+  a {
+    color: black;
+  }
 `
 
 const Layout = ({ children }) => (
