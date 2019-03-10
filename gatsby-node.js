@@ -1,6 +1,7 @@
 const path = require("path")
 const URI = require("urijs");
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const { ifElse, length, equals } = require('ramda');
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -12,11 +13,19 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: 'path',
       value: path,
     })
-    createNodeField({
-      node,
-      name: 'category',
-      value: pathUri.segment(0),
-    })
+    ifElse(
+      equals(3),
+      () => createNodeField({
+        node,
+        name: 'category',
+        value: pathUri.segment(0),
+      }),
+      () => createNodeField({
+        node,
+        name: 'category',
+        value: '',
+      })
+    )(length(pathUri.segment()))
   }
 }
 
