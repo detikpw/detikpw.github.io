@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Flex, Box } from 'rebass';
 import { prop } from 'ramda';
+import Helmet from 'react-helmet';
 import Layout from '../components/layout';
 import Body from '../components/layout/pages/Body';
 import HeaderSection from "../components/layout/pages/HeaderSection";
@@ -15,7 +16,7 @@ export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { markdownRemark } = data // data.markdownRemark holds our post data
-  const { frontmatter, html, timeToRead } = markdownRemark;
+  const { excerpt, frontmatter, html, timeToRead } = markdownRemark;
   const { title, image, topic, date } = frontmatter;
   return (
     <Layout>
@@ -25,6 +26,10 @@ export default function Template({
           captionPx={3}
         />
       )}
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={excerpt} />
+      </Helmet>
       <Body>
         <HeaderSection>
           {topic && <Topic as='h1'>{topic}</Topic>}
@@ -57,6 +62,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { path: { eq: $path } }) {
       html
       timeToRead
+      excerpt(pruneLength: 250)
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
