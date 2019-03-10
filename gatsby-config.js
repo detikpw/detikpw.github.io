@@ -1,6 +1,7 @@
 module.exports = {
     siteMetadata: {
       title: `Catatan Detik`,
+      description: 'Just a Note'
     },
     plugins: ['gatsby-plugin-flow', 'gatsby-plugin-styled-components', 'gatsby-plugin-react-helmet',
     {
