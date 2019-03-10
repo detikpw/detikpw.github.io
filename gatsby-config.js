@@ -22,6 +22,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    'gatsby-plugin-twitter'
+    'gatsby-plugin-twitter',
+    'gatsby-plugin-react-helmet'
   ],
 }
