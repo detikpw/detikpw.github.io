@@ -9,6 +9,7 @@ image:
   src: https://quotefancy.com/media/wallpaper/1600x900/1700800-Thomas-Jefferson-Quote-If-you-want-something-you-have-never-had.jpg
   caption: https://quotefancy.com
   captionUrl: https://quotefancy.com/quote/168888/Thomas-Jefferson-If-you-want-something-you-have-never-had-you-must-be-willing-to-do
+  url: ''
 author: detik_pw
 share: true
 date: 2016-03-13T20:00:12+07:00
