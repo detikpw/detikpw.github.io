@@ -25,7 +25,6 @@ const headerDesktop = () => data => (
       css={{
         textTransform: 'uppercase',
         borderRadius: '0 0 10px 10px',
-        borderTop: '5px solid #000'
       }}
     >
       {map(renderNavItem, data.allMarkdownRemark.group)}
