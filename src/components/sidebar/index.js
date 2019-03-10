@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Button } from 'rebass';
+import { Box, Flex, Button } from 'rebass';
 import { StaticQuery, graphql } from 'gatsby';
 import { map } from 'ramda';
 import { sentence } from 'change-case';
@@ -13,7 +13,7 @@ const renderSidebarItem = ({ fieldValue: category }) => (
   </SidebarItem>
 );
 const sidebar = ({ onCloseSidebar, isSidebarOpen }) => data => (
-  <>
+  <Box onClick={onCloseSidebar}>
     {isSidebarOpen && <Flex
         bg="white"
         width={1}
@@ -48,7 +48,7 @@ const sidebar = ({ onCloseSidebar, isSidebarOpen }) => data => (
         {map(renderSidebarItem, data.allMarkdownRemark.group)}
       </Navbar>
     </Flex>}
-  </>
+  </Box>
 );
 
 const Header = ({ onCloseSidebar, isSidebarOpen }) => (
