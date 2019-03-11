@@ -8,9 +8,9 @@ import { map, prop } from 'ramda';
 import PostList from '../components/layout/pages/PostList';
 
 export default ({
-    data: {
-      allMarkdownRemark: { edges },
-    },
+  data: {
+    allMarkdownRemark: { edges },
+  },
 }): Node => {
   const posts = map(prop('node'), edges)
   return (

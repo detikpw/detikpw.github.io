@@ -3,7 +3,6 @@ import type { Node } from 'react';
 import React from 'react';
 import { Flex } from 'rebass';
 import { prop } from 'ramda';
-import Layout from '../../layout';
 import HeaderSection from '../../layout/pages/HeaderSection';
 import Body from '../../layout/pages/Body';
 import Articles from '../../layout/pages/Articles';
@@ -47,26 +46,24 @@ const renderPosts = ({ frontmatter, id, excerpt, fields }) => {
 }
 export default ({ posts, pageTitle }): Node => {
   return (
-    <Layout>
-      <Flex flexDirection="column">
-        <MobileScreen>
-          <Image
-            src="https://images.unsplash.com/photo-1421882402971-b18cd1741ac6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1488&q=80"
-            url="https://unsplash.com/photos/gm3bxHin8VA"
-            caption="Photo By Daria Nepriakhina"
-            captionUrl="https://unsplash.com/@epicantus"
-            captionPx={3}
-          />
-        </MobileScreen>
-        <Body>
-          <HeaderSection>
-            <PageHeader>
-              {pageTitle}
-            </PageHeader>
-          </HeaderSection>
-          {posts.map(renderPosts)}
-        </Body>
-      </Flex>
-    </Layout>
+    <Flex flexDirection="column">
+      <MobileScreen>
+        <Image
+          src="https://images.unsplash.com/photo-1421882402971-b18cd1741ac6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1488&q=80"
+          url="https://unsplash.com/photos/gm3bxHin8VA"
+          caption="Photo By Daria Nepriakhina"
+          captionUrl="https://unsplash.com/@epicantus"
+          captionPx={3}
+        />
+      </MobileScreen>
+      <Body>
+        <HeaderSection>
+          <PageHeader>
+            {pageTitle}
+          </PageHeader>
+        </HeaderSection>
+        {posts.map(renderPosts)}
+      </Body>
+    </Flex>
   )
 }

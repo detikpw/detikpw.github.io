@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import { Flex, Box } from 'rebass';
 import { prop } from 'ramda';
 import Helmet from 'react-helmet';
-import Layout from '../components/layout';
 import Body from '../components/layout/pages/Body';
 import HeaderSection from "../components/layout/pages/HeaderSection";
 import Article from "../components/layout/pages/Article";
@@ -19,7 +18,7 @@ export default function Template({
   const { excerpt, frontmatter, html, timeToRead } = markdownRemark;
   const { title, image, topic, date } = frontmatter;
   return (
-    <Layout>
+    <>
       {prop('src', image) && (
         <Image
           {...image}
@@ -53,7 +52,7 @@ export default function Template({
         </Article>
       </Body>
       <hr />
-    </Layout>
+    </>
   )
 }
 
