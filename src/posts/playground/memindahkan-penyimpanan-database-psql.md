@@ -71,4 +71,10 @@ Langkah-langkah:
 
 11. Gunakan langkah no.2 untuk cek kembali apakah data_directory sudah mengarah ke partisi baru
 
-Bila iya bisa restart kembali postgre service-nya untuk memastikan. Sekian guide dari saya.
+Bila iya bisa restart kembali postgre service-nya untuk memastikan.
+
+Edit:
+Baca ulang ternyata kurang referensi:
+[digital ocean](https://www.digitalocean.com/community/tutorials/how-to-move-a-postgresql-data-directory-to-a-new-location-on-ubuntu-16-04)
+
+
