@@ -6,7 +6,6 @@ import { path } from 'ramda';
 import { StaticQuery, graphql } from 'gatsby';
 import MobileLayout from './Mobile';
 import DesktopLayout from './Desktop';
-import MobileScreen from '../devices/Mobile';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -53,19 +52,12 @@ const layout = ({ children }) => data => {
         <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet"></link>
       </Helmet>
       <GlobalStyle />
-      <MobileScreen>
-        { isMobile => (
-          isMobile ? (
-            <MobileLayout>
-              {children}
-            </MobileLayout>
-          ) : (
-            <DesktopLayout>
-              {children}
-            </DesktopLayout>
-          )
-        )}
-      </MobileScreen>
+      <MobileLayout>
+        {children}
+      </MobileLayout>
+      <DesktopLayout>
+        {children}
+      </DesktopLayout>
     </Box>
   );
 };
