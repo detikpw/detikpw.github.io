@@ -21,7 +21,12 @@ module.exports = {
         noInlineHighlight: false,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [`gatsby-remark-responsive-iframe`],
+      },
+    },
     'gatsby-plugin-twitter',
     'gatsby-plugin-react-helmet'
   ],
