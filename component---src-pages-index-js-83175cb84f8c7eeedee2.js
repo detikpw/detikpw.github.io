@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{144:function(e,a,n){"use strict";n.r(a),n.d(a,"pageQuery",function(){return d});var r=n(0),t=n.n(r),o=n(214),u=n(213),c=n(180);a.default=function(e){var a=e.data.allMarkdownRemark.edges,n=Object(o.a)(Object(u.a)("node"),a);return t.a.createElement(c.a,{posts:n,pageTitle:"Terbaru"})};var d="2860013208"}}]);
+//# sourceMappingURL=component---src-pages-index-js-83175cb84f8c7eeedee2.js.map
