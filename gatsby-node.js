@@ -34,10 +34,11 @@ exports.createPages = ({ actions, graphql }) => {
 
   const blogPostTemplate = path.resolve(`src/templates/BlogPost.js`)
   const categoryPostTemplate = path.resolve(`src/templates/CategoryPost.js`)
+  const tagPostTemplate = path.resolve(`src/templates/TagPost.js`)
 
   return graphql(`
     {
-      allMarkdownRemark(
+      primary: allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
       ) {
@@ -52,24 +53,39 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       }
+      secondary: allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
     }
   `).then(result => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    result.data.primary.edges.forEach(({ node }) => {
       createPage({
         path: node.fields.path,
         component: blogPostTemplate,
         context: { }, // additional data can be passed via context
       })
     })
-    result.data.allMarkdownRemark.group.forEach(({ fieldValue }) => {
+    result.data.primary.group.forEach(({ fieldValue }) => {
       createPage({
         path: `/${fieldValue}`,
         component: categoryPostTemplate,
         context: { category: fieldValue }
+      })
+    })
+    result.data.secondary.group.forEach(({ fieldValue }) => {
+      createPage({
+        path: `/tags/${fieldValue}`,
+        component: tagPostTemplate,
+        context: { tag: fieldValue }
       })
     })
   })
