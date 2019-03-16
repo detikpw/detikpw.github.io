@@ -5,7 +5,7 @@ import Link from '../link';
 
 const Footer = () => (
   <Body>
-    <Flex py={2}>
+    <Flex py={4}>
       <Text
           fontFamily={400}
           fontSize=".625rem"

@@ -16,9 +16,6 @@ const GlobalStyle = createGlobalStyle`
     width: 0px;  /* remove scrollbar space */
     background: transparent;  /* optional: just make scrollbar invisible */
   }
-  ::-webkit-scrollbar-thumb {
-      background: #FF0000;
-  }
   blockquote {
     font-family: "volkhov",serif;
     font-style: italic;
