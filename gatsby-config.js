@@ -24,7 +24,15 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: [`gatsby-remark-responsive-iframe`, 'gatsby-remark-images'],
+        plugins: [`gatsby-remark-responsive-iframe`, 'gatsby-remark-images',
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "nofollow"
+            }
+          }
+        ],
       },
     },
     'gatsby-plugin-twitter',
