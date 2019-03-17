@@ -69,6 +69,7 @@ export const pageQuery = graphql`
         topic
         image {
           src
+          url
           caption
           captionUrl
         }
