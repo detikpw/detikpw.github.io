@@ -2,10 +2,10 @@
 title: '[TIL] Cara Isi a.k.a Top Up Gopay dengan Menggunakan Ovo'
 tags: [lifehack, til]
 image:
-  src: "https://images.unsplash.com/photo-1518674660708-0e2c0473e68e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
-  url: "https://unsplash.com/photos/8XddFc6NkBY"
-  caption: "Photo by Art Lasovsky"
-  captionUrl: "https://unsplash.com/@artlasovsky"
+  src: "https://images.unsplash.com/photo-1534951009808-766178b47a4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+  url: "https://unsplash.com/photos/OApHds2yEGQ"
+  caption: "Photo by Ibrahim Rifath"
+  captionUrl: "https://unsplash.com/@photoripey"
 date: 2019-03-18
 ---
 
