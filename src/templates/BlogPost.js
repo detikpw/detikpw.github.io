@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { Flex, Box } from 'rebass';
 import { prop } from 'ramda';
 import Helmet from 'react-helmet';
+import { paramCase, sentence } from 'change-case';
 import Layout from '../components/layout';
 import Body from '../components/layout/pages/Body';
 import HeaderSection from "../components/layout/pages/HeaderSection";
@@ -11,13 +12,20 @@ import PageHeader from '../components/typography/PageHeader';
 import Topic from '../components/typography/Topic';
 import Caption from '../components/typography/Caption';
 import Image from '../components/images/Image';
+import Link from '../components/link';
+
+const appendLink = (value, index, values) => (
+  <Link to={`/tags/${paramCase(value)}`} withTextDecoration={false}>
+    {`${sentence(value)}${values.length - 1 !== index ? ', ' : ''}`}
+  </Link>
+);
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { markdownRemark } = data // data.markdownRemark holds our post data
   const { excerpt, frontmatter, html, timeToRead } = markdownRemark;
-  const { title, image, topic, date } = frontmatter;
+  const { title, image, topic, date, tags } = frontmatter;
   return (
     <Layout>
       {prop('src', image) && (
@@ -51,6 +59,9 @@ export default function Template({
         <Article>
           {html}
         </Article>
+        <Caption>
+          tags: {tags.map(appendLink)}
+        </Caption>
       </Body>
       <hr />
     </Layout>
@@ -67,6 +78,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         topic
+        tags
         image {
           src
           url
