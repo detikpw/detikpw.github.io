@@ -13,7 +13,7 @@ const Footer = () => (
         >
           © 2019 Detik P Warjaya. Powered by <Link to="https://www.gatsbyjs.org/">Gatsby</Link>
           &nbsp; inspired by jekyll theme <Link to="https://github.com/mmistakes/so-simple-theme">
-          So Simple Theme </Link> and <Link to="vice.com">vice.com</Link>
+          So Simple Theme </Link> and <Link to="https://www.vice.com">vice.com</Link>
         </Text>
     </Flex>
   </Body>
