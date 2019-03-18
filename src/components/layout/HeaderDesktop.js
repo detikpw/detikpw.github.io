@@ -28,6 +28,9 @@ const headerDesktop = () => data => (
       }}
     >
       {map(renderNavItem, data.allMarkdownRemark.group)}
+      <NavItem to="/tags/til">
+        TIL
+      </NavItem>
     </Flex>
     <Link to="/" withTextDecoration={false}>
       <Text

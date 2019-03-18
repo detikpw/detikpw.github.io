@@ -8,6 +8,13 @@ import { graphql } from "gatsby";
 import { map, prop } from 'ramda';
 import { sentence } from 'change-case';
 import PostList from '../components/layout/pages/PostList';
+
+
+const pageTitleHandler = pageTitle => {
+  if (pageTitle !== 'Til') return pageTitle
+  return 'Today I Learned'
+}
+
 export default ({
     pageContext: { tag },
     data: {
@@ -18,7 +25,7 @@ export default ({
   const pageTitle = sentence(tag);
   return (
     <>
-      <PostList posts={posts} pageTitle={pageTitle} />
+      <PostList posts={posts} pageTitle={pageTitleHandler(pageTitle)} />
       <Helmet>
         <title>{pageTitle}</title>
         {/* TODO Description and reusable Helmet */}

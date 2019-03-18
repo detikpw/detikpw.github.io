@@ -2,6 +2,7 @@ const path = require("path")
 const URI = require("urijs");
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const { ifElse, length, equals } = require('ramda');
+const { paramCase } = require('change-case');
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -83,7 +84,7 @@ exports.createPages = ({ actions, graphql }) => {
     })
     result.data.secondary.group.forEach(({ fieldValue }) => {
       createPage({
-        path: `/tags/${fieldValue}`,
+        path: `/tags/${paramCase(fieldValue)}`,
         component: tagPostTemplate,
         context: { tag: fieldValue }
       })

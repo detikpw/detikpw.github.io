@@ -46,6 +46,9 @@ const sidebar = ({ onCloseSidebar, isSidebarOpen }) => data => (
       </Navbar>
       <Navbar title="category">
         {map(renderSidebarItem, data.allMarkdownRemark.group)}
+        <SidebarItem to="/tags/til">
+          TIL
+        </SidebarItem>
       </Navbar>
     </Flex>}
   </Box>
