@@ -1,8 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Flex, Box } from 'rebass';
-import { prop } from 'ramda';
+import { path, prop } from 'ramda';
 import Helmet from 'react-helmet';
+import URI from 'urijs';
 import { paramCase, sentence } from 'change-case';
 import Layout from '../components/layout';
 import Body from '../components/layout/pages/Body';
@@ -13,19 +14,23 @@ import Topic from '../components/typography/Topic';
 import Caption from '../components/typography/Caption';
 import Image from '../components/images/Image';
 import Link from '../components/link';
+import Share from '../components/social/Share';
 
 const appendLink = (value, index, values) => (
-  <Link to={`/tags/${paramCase(value)}`} withTextDecoration={false}>
+  <Link key={value} to={`/tags/${paramCase(value)}`} withTextDecoration={false}>
     {`${sentence(value)}${values.length - 1 !== index ? ', ' : ''}`}
   </Link>
 );
 
 export default function Template({
+  pageContext: { pathname },
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds our post data
+  const { markdownRemark, site } = data // data.markdownRemark holds our post data
   const { excerpt, frontmatter, html, timeToRead } = markdownRemark;
   const { title, image, topic, date, tags } = frontmatter;
+  const domain = path(['siteMetadata', 'host'], site);
+  const currentUrl = new URI().domain(domain).pathname(pathname)
   return (
     <Layout>
       {prop('src', image) && (
@@ -59,9 +64,13 @@ export default function Template({
         <Article>
           {html}
         </Article>
-        <Caption>
-          tags: {tags.map(appendLink)}
-        </Caption>
+        <Flex alignItems="center">
+          <Caption>
+            tags: {tags.map(appendLink)}
+          </Caption>
+          <Box flex={1} />
+          <Share url={currentUrl.toString()}/>
+        </Flex>
       </Body>
       <hr />
     </Layout>
@@ -70,6 +79,11 @@ export default function Template({
 
 export const pageQuery = graphql`
   query($path: String!) {
+    site {
+      siteMetadata {
+        host
+      }
+    }
     markdownRemark(fields: { path: { eq: $path } }) {
       html
       timeToRead

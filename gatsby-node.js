@@ -69,10 +69,11 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     result.data.primary.edges.forEach(({ node }) => {
+      const pathname = node.fields.path;
       createPage({
-        path: node.fields.path,
+        path: pathname,
         component: blogPostTemplate,
-        context: { }, // additional data can be passed via context
+        context: { pathname }, // additional data can be passed via context
       })
     })
     result.data.primary.group.forEach(({ fieldValue }) => {
