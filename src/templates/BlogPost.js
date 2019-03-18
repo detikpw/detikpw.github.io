@@ -29,8 +29,8 @@ export default function Template({
   const { markdownRemark, site } = data // data.markdownRemark holds our post data
   const { excerpt, frontmatter, html, timeToRead } = markdownRemark;
   const { title, image, topic, date, tags } = frontmatter;
-  const domain = path(['siteMetadata', 'host'], site);
-  const currentUrl = new URI().domain(domain).pathname(pathname)
+  const host = path(['siteMetadata', 'host'], site);
+  const currentUrl = new URI(`${host}/${pathname}`)
   return (
     <Layout>
       {prop('src', image) && (
