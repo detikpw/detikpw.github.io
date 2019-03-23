@@ -41,6 +41,9 @@ exports.createPages = ({ actions, graphql }) => {
     {
       primary: allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
+        filter: {
+          frontmatter: {published: {ne: false}}
+        }
         limit: 1000
       ) {
         group(field: fields___category) {
@@ -57,6 +60,9 @@ exports.createPages = ({ actions, graphql }) => {
       secondary: allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
+        filter: {
+          frontmatter: {published: {ne: false}}
+        }
       ) {
         group(field: frontmatter___tags) {
           fieldValue

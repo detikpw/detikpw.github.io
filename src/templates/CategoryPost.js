@@ -31,9 +31,12 @@ export const pageQuery = graphql`
   query($category: String!) {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { fields: {
-        category: { eq: $category }
-      } }
+      filter: { 
+        fields: {
+          category: { eq: $category }
+        }
+        frontmatter: {published: {ne: false}}
+      }
     ) {
       edges {
         node {

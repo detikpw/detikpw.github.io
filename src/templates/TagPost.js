@@ -40,6 +40,7 @@ export const pageQuery = graphql`
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: {
         tags: { eq: $tag }
+        published: { ne: false }
       } }
     ) {
       edges {

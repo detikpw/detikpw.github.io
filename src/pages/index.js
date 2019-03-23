@@ -20,7 +20,12 @@ export default ({
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: {
+        frontmatter: {published: {ne: false}}
+      }
+    ) {
       edges {
         node {
           id
