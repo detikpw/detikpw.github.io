@@ -10,8 +10,6 @@ const siteMeta = ({ pageData, location, children })=> ({ site: { siteMetadata } 
   const title = getTitle(pageData) || getTitle(siteMetadata);
   const description = getDescription(pageData) || getDescription(siteMetadata);
   const image = path(['image', 'src'])(pageData);
-  console.log('location')
-  console.log(location)
   return (
     <Helmet titleTemplate={`%s | ${getTitle(siteMetadata)}`}>
       <title>{title}</title>
