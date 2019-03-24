@@ -51,10 +51,10 @@ export default ({ posts, pageTitle, pageData, location }): Node => {
       <Flex flexDirection="column">
         <MobileScreen>
           <Image
-            src="https://images.unsplash.com/photo-1421882402971-b18cd1741ac6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1488&q=80"
-            url="https://unsplash.com/photos/gm3bxHin8VA"
-            caption="Photo By Daria Nepriakhina"
-            captionUrl="https://unsplash.com/@epicantus"
+            src="https://images.unsplash.com/photo-1496395650962-374cae58ca8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1504&q=80"
+            url="https://unsplash.com/photos/09SxeOdtlPE"
+            caption="Photo By Toe Heftiba"
+            captionUrl="https://unsplash.com/@heftiba"
             captionPx={3}
           />
         </MobileScreen>
