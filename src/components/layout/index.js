@@ -1,11 +1,9 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import { createGlobalStyle } from 'styled-components'
 import { Box } from 'rebass';
-import { path } from 'ramda';
-import { StaticQuery, graphql } from 'gatsby';
 import MobileLayout from './Mobile';
 import DesktopLayout from './Desktop';
+import SiteMeta from '../seo/SiteMeta';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -29,50 +27,28 @@ const GlobalStyle = createGlobalStyle`
     color: black;
   }
 `
-const layout = ({ children }) => data => {
-  const { title, description } = path(['site', 'siteMetadata'])(data);
-  return (
-    <Box
-      css={{
-        fontFamily:'HelveticaNeueArabic,NeueHelveticaW01,Helvetica,HelveticaWorld,Arial,TazuganeGothic,sans-serif',
-      }}
-    >
-      <Helmet titleTemplate={`%s | ${title}`}>
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
-        />
-        <title>Home</title>
-        <meta name="description" content={description} />
-        {/* TODO Separate mobile and desktop */}
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet"></link>
-      </Helmet>
-      <GlobalStyle />
-      <MobileLayout>
-        {children}
-      </MobileLayout>
-      <DesktopLayout>
-        {children}
-      </DesktopLayout>
-    </Box>
-  );
-};
-
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query{
-        site {
-          siteMetadata {
-            title
-            description
-          }
-        }
-      }`
-    }
-    render={layout({ children })}
-  />
+const Layout = ({ children, location, pageData }) => (
+  <Box
+    css={{
+      fontFamily:'HelveticaNeueArabic,NeueHelveticaW01,Helvetica,HelveticaWorld,Arial,TazuganeGothic,sans-serif',
+    }}
+  >
+    <SiteMeta location={location} pageData={pageData}>
+      <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
+      />
+      <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet"></link>
+    </SiteMeta>
+    <GlobalStyle />
+    <MobileLayout>
+      {children}
+    </MobileLayout>
+    <DesktopLayout>
+      {children}
+    </DesktopLayout>
+  </Box>
 );
 
 export default Layout;

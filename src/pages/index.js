@@ -9,12 +9,16 @@ import PostList from '../components/layout/pages/PostList';
 
 export default ({
     data: {
-      allMarkdownRemark: { edges },
+      allMarkdownRemark: { edges }
     },
+    location
 }): Node => {
   const posts = map(prop('node'), edges)
+  const pageData = {
+    title: 'Home'
+  }
   return (
-    <PostList posts={posts} pageTitle="Terbaru" />
+    <PostList posts={posts} pageTitle="Terbaru" location={location} pageData={pageData} />
   )
 }
 

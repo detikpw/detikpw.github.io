@@ -45,9 +45,9 @@ const renderPosts = ({ frontmatter, id, excerpt, fields }) => {
     </Articles>
   );
 }
-export default ({ posts, pageTitle }): Node => {
+export default ({ posts, pageTitle, pageData, location }): Node => {
   return (
-    <Layout>
+    <Layout location={location} pageData={pageData}>
       <Flex flexDirection="column">
         <MobileScreen>
           <Image

@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Flex, Box } from 'rebass';
 import { path, prop } from 'ramda';
-import Helmet from 'react-helmet';
 import URI from 'urijs';
 import { paramCase, sentence } from 'change-case';
 import Layout from '../components/layout';
@@ -25,24 +24,26 @@ const appendLink = (value, index, values) => (
 export default function Template({
   pageContext: { pathname },
   data, // this prop will be injected by the GraphQL query below.
+  location
 }) {
   const { markdownRemark, site } = data // data.markdownRemark holds our post data
   const { excerpt, frontmatter, html, timeToRead } = markdownRemark;
   const { title, image, topic, date, tags } = frontmatter;
   const host = path(['siteMetadata', 'host'], site);
   const currentUrl = new URI(`${host}/${pathname}`)
+  const pageData = {
+    title,
+    description: excerpt,
+    image
+  }
   return (
-    <Layout>
+    <Layout location={location} pageData={pageData}>
       {prop('src', image) && (
         <Image
           {...image}
           captionPx={3}
         />
       )}
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={excerpt} />
-      </Helmet>
       <Body>
         <HeaderSection>
           {topic && <Topic as='h1'>{topic}</Topic>}

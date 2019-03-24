@@ -3,27 +3,25 @@
 import type { Node } from 'react';
 
 import React from 'react';
-import Helmet from 'react-helmet';
 import { graphql } from "gatsby";
 import { map, prop } from 'ramda';
 import { sentence } from 'change-case';
 import PostList from '../components/layout/pages/PostList';
+
 export default ({
     pageContext: { category },
     data: {
       allMarkdownRemark: { edges },
     },
+    location
 }): Node => {
   const posts = map(prop('node'), edges)
   const pageTitle = sentence(category);
+  const pageData = {
+    title: pageTitle
+  };
   return (
-    <>
-      <PostList posts={posts} pageTitle={pageTitle} />
-      <Helmet>
-        <title>{pageTitle}</title>
-        {/* TODO Description and reusable Helmet */}
-      </Helmet>
-    </>
+    <PostList posts={posts} pageTitle={pageTitle} pageData={pageData} location={location} />
   )
 }
 
