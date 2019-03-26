@@ -43,6 +43,9 @@ const sidebar = ({ onCloseSidebar, isSidebarOpen }) => data => (
         <SidebarItem to="/">
           Home
         </SidebarItem>
+        <SidebarItem to="/about-me">
+          About Me
+        </SidebarItem>
       </Navbar>
       <Navbar title="category">
         {map(renderSidebarItem, data.allMarkdownRemark.group)}
