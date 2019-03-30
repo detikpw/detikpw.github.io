@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Flex, Box } from 'rebass';
-import { path, prop } from 'ramda';
+import { path, prop, isEmpty } from 'ramda';
 import URI from 'urijs';
 import { paramCase, sentence } from 'change-case';
 import Layout from '../components/layout';
@@ -66,9 +66,9 @@ export default function Template({
           {html}
         </Article>
         <Flex alignItems="center">
-          <Caption>
+          {!isEmpty(tags) && <Caption>
             tags: {tags.map(appendLink)}
-          </Caption>
+          </Caption>}
           <Box flex={1} />
           <Share url={currentUrl.toString()}/>
         </Flex>

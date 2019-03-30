@@ -31,6 +31,9 @@ const headerDesktop = () => data => (
       <NavItem to="/tags/til">
         TIL
       </NavItem>
+      <NavItem to="/about-me">
+        About Me
+      </NavItem>
     </Flex>
     <Link to="/" withTextDecoration={false}>
       <Text
