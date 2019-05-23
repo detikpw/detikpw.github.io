@@ -59,7 +59,11 @@ const HeaderDesktop = () => (
   <StaticQuery
     query={graphql`
       query{
-        allMarkdownRemark{
+        allMarkdownRemark(
+          filter: {
+            frontmatter: {published: {ne: false}}
+          }
+        ){
           group(field: fields___category) {
             fieldValue
           }
