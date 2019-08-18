@@ -14,7 +14,6 @@ share: true
 comments: true
 date: 2017-09-21T17:42:21+07:00
 topic: anime winter 2018
-published: false
 ---
 
 Yap series Sora yori mo Tooi Basho (SYMTB) sudah berakhir, buat yang pernah mengikuti K-on serial ini cukup familiar menghadirkan empat main heroine, tapi ini berbeda dengan slice of life pada umumnya yang main plot lebih di sekolah, pada serial SYMTB ini mengisahkan usaha kelompok sahabat ini untuk ke Antartika
