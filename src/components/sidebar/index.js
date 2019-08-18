@@ -57,7 +57,7 @@ const sidebar = ({ onCloseSidebar, isSidebarOpen }) => data => (
   </Box>
 );
 
-const Header = ({ onCloseSidebar, isSidebarOpen }) => (
+const Sidebar = ({ onCloseSidebar, isSidebarOpen }) => (
   <StaticQuery
     query={graphql`
       query{
@@ -76,4 +76,4 @@ const Header = ({ onCloseSidebar, isSidebarOpen }) => (
   />
 );
 
-export default Header;
+export default Sidebar;
